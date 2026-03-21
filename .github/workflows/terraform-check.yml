@@ -1,0 +1,29 @@
+name: Terraform CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Run Terraform checks
+        run: |
+          for dir in day1 day2 day3 day4; do
+            echo "Checking $dir"
+            cd $dir
+            terraform init -backend=false
+            terraform fmt -check
+            terraform validate
+            terraform plan
+            cd ..
+          done
