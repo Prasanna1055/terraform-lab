@@ -16,7 +16,7 @@ jobs:
 
       - name: Run Terraform checks
         run: |
-          for dir in day1 day2 day4 bonus; do
+          for dir in Assign1 day2 day4 bonus; do
             echo "Checking $dir"
             cd $dir
 
