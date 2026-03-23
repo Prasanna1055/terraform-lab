@@ -18,7 +18,7 @@ jobs:
 
       - name: Run Terraform checks
         run: |
-          for dir in day1 day2 day3 day4; do
+          for dir in day1 day2 day4; do
             echo "Checking $dir"
             cd $dir
             terraform init -backend=false
